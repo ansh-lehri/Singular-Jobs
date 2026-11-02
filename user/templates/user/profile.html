@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Profile</title>
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/errors.css' %}" />
+	</head>
+	
+	<body>
+		<header>
+			<nav class="flex-container-1">
+				<div>
+				<a id="singular-jobs" href="https://singularjobs.herokuapp.com/singular-jobs">Singular Jobs</a>
+				</div>
+				
+				<div class="flex-container-1-1 ">
+					<a class="other-pages" href="https://singularjobs.herokuapp.com/singular-jobs/my_jobs">MyJobs</a>
+					<a href="https://singularjobs.herokuapp.com/singular-jobs/profile" {% if request.path == "/singular-jobs/profile"  %}class="active"{% endif %}class="other-pages" >Profile</a>
+					<a class="other-pages" href="https://singularjobs.herokuapp.com/singular-jobs/faq">FAQ</a>
+					<div class="dropdown other-pages">
+						<button id="username" class="other-pages">@{{ username }}</button>
+						<div class="dropdown-content">
+							<a id="dropdown-links" href="https://forms.gle/XPNeHFEtvKzbXMf5A" target="_blank">Feedback</a>
+							<a id="dropdown-links" href="https://singularjobs.herokuapp.com/singular-jobs/change_password">Change Password</a>
+							<a id="dropdown-links" href="https://singularjobs.herokuapp.com/singular-jobs/logout">LogOut</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		{% if messages %}
+		<div class="message-lists">
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }} message"{% endif %}>
+				{{ message }}
+				<a href="https://singularjobs.herokuapp.com/singular-jobs/profile" class="{{ message.tags }} message">&times;</a>
+			</li>
+			{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		
+		<script>
+		var message_ele = document.getElementById("message");
+
+		setTimeout(function(){ 
+		   message_ele.style.display = "none"; 
+		}, 3000);
+		
+		</script>
+		
+		
+		<main>		
+		<div id="form-container">
+			<p id="request-user"> Please mention your:</p>
+			<form method="POST">{% csrf_token %}				
+				<div class="flex-container-2">
+				<div class="flex-container-2-1">
+				<div class="flex-container-2-2">
+				<label id="fieldname"  for="technical_skills">Technical Skills</label>
+				<input id="user-area" type="text" id="technical_skills" name="technical_skills" value="{{ profile.technical_skills }}" placeholder="Enter , separated values" required>
+				</div>
+				<div class="flex-container-2-2">
+				<label id="fieldname"  for="soft_skills">Soft Skills</label>
+				<input id="user-area" type="text" id="soft_skills" name="soft_skills" value="{{ profile.soft_skills }}" placeholder="Enter , separated values">
+				</div>
+				<div class="flex-container-2-2">
+				<label id="fieldname"  for="job_types">Job types you are interested in</label>
+				<input id="user-area" type="text" id="job_types" name="job_types" value="{{ profile.job_types }}" placeholder="Enter , separated values">
+				</div>
+				<div class="flex-container-2-2">
+				<label id="fieldname"  for="subject_interest">Subjects of interest</label>
+				<input id="user-area" type="text" id="subject_interest" name="subject_interest" value="{{ profile.subject_interest }}" placeholder="Enter , separated values">
+				</div>
+				<div class="flex-container-2-2">
+				<label id="fieldname"  for="linkedin_profile">Linkedin Profile</label>
+				<input id="user-area" type="url" id="linkedin_profile" name="linkedin_profile" value="{{ profile.linkedin_profile }}" placeholder="URL of form https://linkedin.com/abc">
+				</div>
+				</div>			
+					</div>	
+				<div class="button-div" >	
+				<input id="save-changes" type="submit" value="Save Changes">
+				</div>
+			</form>
+	
+		
+	</body>
+</html>
+
+
+
+
+
+

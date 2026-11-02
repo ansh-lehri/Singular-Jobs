@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>FAQ</title>
+		<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/faq.css' %}" />	
+		
+	</head>
+	
+	<body>
+	
+	
+		<header>
+			<nav class="flex-container-1">
+				<div>				
+				<a id="singular-jobs" href="https://singularjobs.herokuapp.com/singular-jobs">Singular Jobs</a>
+				</div>
+				<div class="flex-container-1-1 ">
+					<a class="other-pages" href="https://singularjobs.herokuapp.com/singular-jobs/my_jobs">MyJobs</a>
+					<a class="other-pages" href="https://singularjobs.herokuapp.com/singular-jobs/profile">Profile</a>
+					<a href="https://singularjobs.herokuapp.com/singular-jobs/faq" {% if request.path == "/singular-jobs/faq"  %}class="active"{% endif %}class="other-pages">FAQ</a>
+				</div>
+			</nav>
+		</header>
+		
+		<div class="page-name">
+			Frequently Asked Questions
+		</div>
+		
+		
+		<section>
+		
+			<div class="container">
+				<div class="accordion">
+				
+					<div class="accordion-item" id="question1">
+						<a class="accordion-link" href="#question1">
+							What problem is Singular Jobs trying to solve ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								The idea of Seraching Jobs from different platforms, is what Singular Jobs is trying to solve.
+							</p>
+						</div>
+					</div>
+				
+					<div class="accordion-item" id="question2">
+						<a class="accordion-link" href="#question2">
+							How is Singular Jobs different from other job listing platforms ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Unlike other platforms, Singular Jobs focuses on curating personalised job lists from different job platforms for its users so as to create
+								a single gateway for apllying to jobs on different platforms.
+								
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question3">
+						<a class="accordion-link" href="#question3">
+							What is vision of Singular Jobs ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Singular Jobs aims at becoming a personalised gateway to jobs listed on different job boards/sites.   
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question4">
+						<a class="accordion-link" href="#question4">
+							Why should I use Singular Jobs ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+							
+								Because of following points:
+								<ul class="why-singular">
+									<li>Single gateway to access jobs on different platforms.</li>
+									<li>Saves times spent on searching job opportunities.</li>
+									<li>Helps in discovering opportunities at new ventures.</li>
+									<li>Helps in applying to jobs as soon as possible.</li>
+									<li>Provides exposure to newer and newer job platforms, which normally would be difficult.</li>
+								</ul>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="accordion-item" id="question5">
+						<a class="accordion-link" href="#question5">
+							Who developed Singular Jobs ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer" id="who-created">
+							{% load static %}
+							<img src="{% static 'images/yc.jpg' %}" id="ansh">
+							<p id="about-developer">
+								<span id="contact-info">Ansh Lehri</span>, final year student in Computer Science and Engineering at IET Lucknow.
+								<br>
+								 My interest areas are Machine Learning, NLP, Recommendation Systems, Software Development, Entreprenuership.
+								<br>
+								Intern at Koverhoop Technologies as Software Developer - Data Science role.
+								<br>
+								So far, I have co-developed Hunger Book and Singular News and was selected in Launchpad Programme at NSRCEL,IIM Bangalore.
+								<br>
+								I developed Singular Jobs, as was frustated about having to search jobs on various platforms and wanted to address this very idea.							
+								I would like to extend my special gratitude to my friend and batchmate <span id="himanshu">Himanshu Verma</span> for helping with Frontend. You can reach out to him on <a id="himanshu" href="https://www.linkedin.com/in/himanshu-verma-5037901a5/" target="_blank">LinkedIn.</a> 
+								<br>
+								<br>
+								For any query, you can either fill <a id="contact-info" href="https://forms.gle/XPNeHFEtvKzbXMf5A" target="_blank">Feedback form</a> or mail at <span id="contact-info">anshlehri0599@gmail.com</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="accordion-item" id="question6">
+						<a class="accordion-link" href="#question6">
+							Is Singular Jobs an open-source project ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								No, Singular Jobs is not an open-source project.
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="accordion-item" id="question7">
+						<a class="accordion-link" href="#question7">
+							Why some jobs recommended are completely out of my skill domain which I mentioned in my profile?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Singular Jobs try to give its user sense of diversity, dicovery and explorability. To achieve it, Singular Jobs
+								predicts skills similar to your mentioned skills and uses these predicted skills as well to predict jobs for you.
+								Say, a user mentioned ML, NLP, Python, Mongodb as skills, so Singular Jobs predicts AI, DL, Django, Web Dev, Maths as
+								skills closely related and take them into account as well.
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="accordion-item" id="question8">
+						<a class="accordion-link" href="#question8">
+							What are Singular Jobs sessions ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								1 Singular Jobs session = duration of 6 hours.
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question9">
+						<a class="accordion-link" href="#question9">
+							How much old jobs can I see on Singular Jobs ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Jobs, 8-12 sessions old can be seen on Singular Jobs.
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question10">
+						<a class="accordion-link" href="#question10">
+							How many platforms does Singular Jobs utilise to curate job lists ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								3 platforms; Internshala, Naukri.com, GeeksGod are used for now.
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="accordion-item" id="question11">
+						<a class="accordion-link" href="#question11">
+							Will more platforms and career pages be added in future ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Definitely. Being a prototype, Singular Jobs is limited to 3 platforms but in some time more platforms can be added.
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question12">
+						<a class="accordion-link" href="#question12">
+							How can I improve my job list ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Mention your skills in as detailed manner as possible with proper keywords. 
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question13">
+						<a class="accordion-link" href="#question13">
+							Can I send request for feature addition or inclsuion of a particular platform or company career page ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Surely. All you need to do is fill up the form and I will try my best to add your request to the platform. 
+							</p>
+						</div>
+					</div>
+					
+					<div class="accordion-item" id="question14">
+						<a class="accordion-link" href="#question14">
+							Why does Singular Jobs collect my LinkedIn Profile ?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								LinkedIn Profile is meant to be used in a feature to be introduced soon. Once the feature is out, it will be easy for registered users to use the feature.
+								Although it is not mandatory to provide your Linkedin profile. Also, your Linkedin profile URL is not verified. Once the feature is out, you will be needed to veify your profile.
+							</p>
+						</div>
+					</div>
+		</section>
+	</body>
+</html>

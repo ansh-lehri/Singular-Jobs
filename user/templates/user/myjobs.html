@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MyJobs</title>
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/myjobs.css' %}" />
+	</head>
+	
+	<body>
+		<header class="top">
+			<nav class="flex-container-1">
+				
+				<div id="singular-jobs-size">
+				<a id="singular-jobs" href="https://singularjobs.herokuapp.com/singular-jobs">Singular Jobs</a>
+				</div>
+				
+				
+				<div class="flex-container-1-1 ">
+					<a href="https://singularjobs.herokuapp.com/singular-jobs/my_jobs" {% if request.path == "/singular-jobs/my_jobs"  %}class="active"{% endif %}class="other-pages">MyJobs</a>
+					<a class="other-pages active" href="https://singularjobs.herokuapp.com/singular-jobs/profile">Profile</a>
+					<a class="other-pages" href="https://singularjobs.herokuapp.com/singular-jobs/faq">FAQ</a>
+					<div class="dropdown other-pages">
+						<button id="username" class="other-pages">@{{ username }}</button>
+						<div class="dropdown-content">
+							<a id="dropdown-links" href="https://forms.gle/XPNeHFEtvKzbXMf5A" target="_blank">Feedback</a>
+							<a id="dropdown-links" href="https://singularjobs.herokuapp.com/singular-jobs/change_password">Change Password</a>
+							<a id="dropdown-links" href="https://singularjobs.herokuapp.com/singular-jobs/logout">LogOut</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<p id="heading"> Your Jobs :</p>
+		<div class="main">
+		
+		
+		
+		
+		{% for job in jobs %}
+		<div class="card">	
+			<a href="{{ job.url }}" target="_blank">
+			<div class="job-title-and-platform-name">
+			<h2 id="title">{{ job.job_title }}</h2>
+			<h3 id="company-name">{{ job.company_name }}</h3>
+			</div>
+			
+			<div class="meta-values">
+			<span id="platform-name">Listed On: {{ job.listed_on }}</span>
+			</div>
+			
+			<div class="job-desc">
+				{{ job.short_desc }}   
+		    </div>
+			</a>
+		</div>
+		{% endfor %}
+		</div>		
+		
+
+		
+		<div class="flex-container-3">
+								
+				{% if jobs.has_previous %}
+				<a href="{% url 'my_jobs' %}?page={{ jobs.previous_page_number }}"><div class="previous-page color-previous">Previous Page</div></a>
+				{% else %}
+				 <a href="#"><div class="previous-page color-disable">Previous Page</div></a>
+				{% endif %}	
+				
+				{% if jobs.has_next %}
+				<a href="{% url 'my_jobs' %}?page={{ jobs.next_page_number }}"><div class="next-page color-next">Next Page</div></a>
+				{% else %}
+				<a href="#"><div class="next-page color-disable">Next Page</div></a>
+				{% endif %}
+		</div>
+		
+		
+	</body>
+</html>
+		
+		
+		
+		
+		
+		
+		

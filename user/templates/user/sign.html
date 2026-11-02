@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SignUp</title>
+		
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/errors.css' %}" />
+		
+		
+	</head>
+	<body>
+        
+		<div class="flex-container-1">
+			<div>
+			<a id="singular-jobs" href="https://singularjobs.herokuapp.com/singular-jobs">Singular Jobs</a>
+			</div>
+			
+			<div class="flex-item-1-1">
+			<div id="already-registered">Already registered ?</div>	
+			<div>
+			<a href="https://singularjobs.herokuapp.com/singular-jobs/login"><input class="hover" id="login" type="button" value="Login"></a>
+			</div>
+			</div>
+		</div>
+				
+		{% if messages %}
+		<div class="message-lists">
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }} message"{% endif %}>
+			{{ message }}
+			<a href="https://singularjobs.herokuapp.com/singular-jobs/register" class="{{ message.tags }} message">&times;</a>
+			</li>
+			{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		
+		<div class="flex-container-2">
+		
+			<div class="flex-item flex-item-1" id="signup-image">
+				{% load static %}
+				<img src="{% static 'images/signup.png' %}" id="ansh">
+			</div>
+			
+			<div class="flex-item flex-item-2">
+					
+				<form class="try" name="signup" method="POST">{% csrf_token %}
+					<div class="user-fields">
+						<label id="fieldname" for="username">Username:</label><br>
+						<input id="user-area" type="text" id="username" name="username" placeholder="Should be of form abc or abc_xyz" required>
+					</div>
+					
+					<div class="user-fields">
+						<label id="fieldname"  for="email">E-Mail:</label><br>
+						<input id="user-area" type="email" id="email" name="email" placeholder="Should have @gmail.com" required>
+					</div>
+					
+					<div class="user-fields">
+						<label id="fieldname"  for="password">Password:</label><br>
+						<input id="user-area" type="password" id="password" name="password" placeholder="Should be atleast 8 characters long.\n Should not contain $ or #"required>
+					</div>
+					
+					<div class="user-fields">
+						<label id="fieldname" for="confirm_password">Confirm-Password:</label><br>
+						<input id="user-area" type="password" id="confirm_password" name="confirm_password" required>
+					</div>
+					
+					<input class="hover" id="register" type="submit" value="Register">
+					
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

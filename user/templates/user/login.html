@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LogIn</title>
+	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/errors.css' %}" />
+	</head>
+	<body>
+        
+		<div class="flex-container-1">
+			<div>
+			<a id="singular-jobs" href="https://singularjobs.herokuapp.com/singular-jobs">Singular Jobs</a>
+			</div>
+			
+			<div class="flex-item-1-1">
+			<div id="already-registered">Not registered ?
+			</div>	
+			<div>
+			<a href="https://singularjobs.herokuapp.com/singular-jobs/register"><input class="hover" id="signup" type="button" value="SignUp"></a>
+			</div>
+			</div>
+		</div>
+		
+		<br>
+		
+		
+		{% if messages %}
+		<div class="message-lists">
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }} message"{% endif %}>
+			{{ message }}
+			<a href="https://singularjobs.herokuapp.com/singular-jobs/login" class="{{ message.tags }} message">&times;</a>
+			</li>
+			{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		
+		<script>
+		var message_ele = document.getElementById("message");
+
+		setTimeout(function(){ 
+		   message_ele.style.display = "none"; 
+		}, 3000);
+		
+		</script>
+		
+		
+		
+		<div id="welcome-message">
+		<p>Welcome!!</p>
+		<p>your jobs are waiting for you</p>
+		</div>
+		
+		<div class="flex-container-2">
+				
+			<div class="flex-item flex-item-1" id="signup-image">
+				{% load static %}
+				<img src="{% static 'images/signup.png' %}" id="ansh">
+			</div>
+			
+			<div class="flex-item flex-item-2">
+				<form class="try" method="POST" name="login">{% csrf_token %}	
+					
+					<div class="user-fields">
+						<label id="fieldname"  for="email">E-Mail:</label><br>
+						<input id="user-area" type="email" id="email" name="email" required>
+					</div>
+					
+					<div class="user-fields">
+						<label id="fieldname"  for="password">Password:</label><br>
+						<input id="user-area" type="password" id="password" name="password" required>
+					</div>
+					
+					<input class="hover" id="login" type="submit" value="LogIn">
+					<div>
+					<a href="https://singularjobs.herokuapp.com/singular-jobs/change_password" id="a-decor"><p id="forgot-password">Forgot Password?</p></a>
+					</div>
+				</form>
+			</div>
+		</div>	
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Redirecting | Profile</title>
+		
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/errors.css' %}" />
+		
+		</head>
+	<body> 
+	
+		{% if messages %}
+			<div class="message-lists">
+			<ul class="messages">
+				{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			</div>
+		{% endif %}
+
+	
+		<script>
+			function redirect(){
+			   window.location.replace("https://singularjobs.herokuapp.com/singular-jobs/profile");
+			}
+
+			setTimeout(redirect, 1000);
+		</script>	
+	</body>
+</html>
